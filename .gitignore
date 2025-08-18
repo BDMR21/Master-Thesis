@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/raw/**        # keep PDFs out of normal Git history (LFS handles them)
+!data/raw/.gitkeep
+results/**
+data/interim/*.csv
+data/interim/*.jsonl
+EOF

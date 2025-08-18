@@ -1,0 +1,2 @@
+study_id,title,year,ml_family,datasets,task_type,metrics_reported,evaluation_protocol.split_type,evaluation_protocol.k,performance.f1_macro,performance.accuracy,pdf_filename
+s1,Study,2021,cnn,CIC-IDS2017,binary,f1_macro;accuracy,k-fold-cv,5,0.95,0.97,a.pdf

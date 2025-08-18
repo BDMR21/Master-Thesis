@@ -1,0 +1,445 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NIDS AI/ML Study Data-Extraction Schema (2019\u20132025)",
+  "type": "object",
+  "required": [
+    "study_id",
+    "title",
+    "year",
+    "ml_family",
+    "datasets",
+    "task_type"
+  ],
+  "properties": {
+    "study_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2010,
+      "maximum": 2030
+    },
+    "venue": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string",
+      "pattern": "^10\\..+"
+    },
+    "url": {
+      "type": "string"
+    },
+    "pdf_filename": {
+      "type": "string"
+    },
+    "nids_type": {
+      "type": "string",
+      "enum": [
+        "anomaly",
+        "signature",
+        "hybrid",
+        "unspecified"
+      ]
+    },
+    "traffic_modality": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "flow",
+          "packet",
+          "payload",
+          "netflow/ipfix",
+          "pcap",
+          "logs",
+          "other"
+        ]
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "statistical",
+          "header",
+          "payload-bytes",
+          "embeddings",
+          "time-series",
+          "graph",
+          "image",
+          "other"
+        ]
+      }
+    },
+    "ml_family": {
+      "type": "string",
+      "enum": [
+        "classical-ml",
+        "tree-ensemble",
+        "svm",
+        "naive-bayes",
+        "knn",
+        "logistic-regression",
+        "deep-learning",
+        "cnn",
+        "rnn-lstm-gru",
+        "transformer",
+        "autoencoder",
+        "gan",
+        "gcnn",
+        "hybrid",
+        "rule-based-ml",
+        "unspecified"
+      ]
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "hyperparameters": {
+          "type": "string"
+        }
+      }
+    },
+    "datasets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "NSL-KDD",
+          "KDDCup99",
+          "UNSW-NB15",
+          "CIC-IDS2017",
+          "CIC-IDS2018",
+          "CSE-CIC-IDS2018",
+          "CIC-DDoS2019",
+          "BoT-IoT",
+          "ToN-IoT",
+          "ISCX2012",
+          "CIC-DoHBrw-2020",
+          "UNSW-Edge-IIoT",
+          "Darknet-2020",
+          "MAWILab",
+          "CTU-13",
+          "Other"
+        ]
+      }
+    },
+    "dataset_other_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "binary",
+        "multiclass",
+        "multilabel"
+      ]
+    },
+    "class_imbalance_ratio": {
+      "type": "number"
+    },
+    "imbalance_handling": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "none",
+          "undersampling",
+          "oversampling",
+          "smote",
+          "class-weights",
+          "threshold-tuning",
+          "focal-loss",
+          "other"
+        ]
+      }
+    },
+    "evaluation_protocol": {
+      "type": "object",
+      "properties": {
+        "split_type": {
+          "type": "string",
+          "enum": [
+            "holdout",
+            "k-fold-cv",
+            "stratified-k-fold",
+            "time-based",
+            "LOSO",
+            "leave-one-attack-out",
+            "cross-dataset",
+            "nested-cv",
+            "not-reported"
+          ]
+        },
+        "k": {
+          "type": "integer"
+        },
+        "train_test_split": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "validation_split": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "random_seed_reported": {
+          "type": "boolean"
+        },
+        "leakage_controls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "no-host-overlap",
+              "no-flow-overlap",
+              "time-separated",
+              "deduplicated",
+              "feature-fit-only-train",
+              "not-reported"
+            ]
+          }
+        }
+      }
+    },
+    "metrics_reported": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "accuracy",
+          "precision_macro",
+          "precision_weighted",
+          "recall_macro",
+          "recall_weighted",
+          "f1_macro",
+          "f1_weighted",
+          "f1_binary",
+          "roc_auc",
+          "pr_auc",
+          "mcc",
+          "far",
+          "dr",
+          "tpr",
+          "tnr",
+          "fpr",
+          "fnr",
+          "sensitivity",
+          "specificity",
+          "throughput",
+          "latency",
+          "memory",
+          "params",
+          "flops",
+          "other"
+        ]
+      }
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "accuracy": {
+          "type": "number"
+        },
+        "precision_macro": {
+          "type": "number"
+        },
+        "recall_macro": {
+          "type": "number"
+        },
+        "f1_macro": {
+          "type": "number"
+        },
+        "f1_weighted": {
+          "type": "number"
+        },
+        "roc_auc": {
+          "type": "number"
+        },
+        "mcc": {
+          "type": "number"
+        },
+        "far": {
+          "type": "number"
+        },
+        "dr": {
+          "type": "number"
+        },
+        "fpr": {
+          "type": "number"
+        },
+        "fnr": {
+          "type": "number"
+        },
+        "tpr": {
+          "type": "number"
+        },
+        "tnr": {
+          "type": "number"
+        },
+        "confusion_matrix": {
+          "type": "object",
+          "properties": {
+            "tp": {
+              "type": "integer"
+            },
+            "fp": {
+              "type": "integer"
+            },
+            "fn": {
+              "type": "integer"
+            },
+            "tn": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "per_class_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "class_label": {
+            "type": "string"
+          },
+          "precision": {
+            "type": "number"
+          },
+          "recall": {
+            "type": "number"
+          },
+          "f1": {
+            "type": "number"
+          },
+          "support": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "baselines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "performance": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "training_time_s": {
+          "type": "number"
+        },
+        "inference_time_ms_per_sample": {
+          "type": "number"
+        },
+        "throughput_samples_s": {
+          "type": "number"
+        }
+      }
+    },
+    "compute": {
+      "type": "object",
+      "properties": {
+        "gpu_model": {
+          "type": "string"
+        },
+        "cpu_model": {
+          "type": "string"
+        },
+        "ram_gb": {
+          "type": "number"
+        }
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "properties": {
+        "code_available": {
+          "type": "boolean"
+        },
+        "code_url": {
+          "type": "string"
+        },
+        "data_split_available": {
+          "type": "boolean"
+        },
+        "seed_reported": {
+          "type": "boolean"
+        },
+        "params_reported": {
+          "type": "boolean"
+        },
+        "license": {
+          "type": "string"
+        }
+      }
+    },
+    "threats_to_validity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "dataset-bias",
+          "evaluation-leakage-risk",
+          "class-imbalance-not-addressed",
+          "metric-mismatch",
+          "small-sample",
+          "hyperparameter-unclear",
+          "external-validity-limited",
+          "not-reported"
+        ]
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "extracted_by": {
+      "type": "string"
+    },
+    "extracted_on": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}
