@@ -12,9 +12,10 @@
 
 # 2\. Extract:
 
-# &nbsp;  ```bash
+```bash
 
-# &nbsp;  python extract\_nids\_meta.py --pdf\_dir ./pdfs --out\_csv extracted.csv --schema data\_extraction\_schema.json```
+# &nbsp;  python extract\_nids\_meta.py --pdf\_dir ./pdfs --out\_csv extracted.csv --schema data\_extraction\_schema.json
+```
 
 3\. Validate \& normalize:
 
