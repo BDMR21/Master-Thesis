@@ -1,12 +1,8 @@
-# \# README — Extraction \& Meta-Analysis Package
+# README — Extraction \& Meta-Analysis Package
 
-# 
+This folder contains the schema, templates, scripts, and docs to reproduce the NIDS meta-analysis.
 
-# This folder contains the schema, templates, scripts, and docs to reproduce the NIDS meta-analysis.
-
-# 
-
-# \## Quick start
+## Quick start
 
 1\. Put PDFs in `./pdfs/`.
 
