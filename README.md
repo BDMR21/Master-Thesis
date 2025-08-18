@@ -8,9 +8,9 @@
 
 # \## Quick start
 
-# 1\. Put PDFs in `./pdfs/`.
+1\. Put PDFs in `./pdfs/`.
 
-# 2\. Extract:
+2\. Extract:
 
 ```bash
 
